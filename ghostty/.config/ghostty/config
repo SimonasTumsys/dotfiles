@@ -12,7 +12,16 @@
 # Font
 font-family = "CommitMono Nerd Font"
 font-size = 16 
+font-style = "bold"
+adjust-underline-position = 10
 
 # Theme
 theme = tokyonight_night
 
+# Background
+background-opacity = 0.85
+background-blur = true
+
+# Title bar
+macos-titlebar-style = hidden
+window-decoration = false
