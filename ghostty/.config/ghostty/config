@@ -11,7 +11,7 @@
 
 # Font
 font-family = "CommitMono Nerd Font"
-font-size = 14
+font-size = 16 
 
 # Theme
 theme = tokyonight_night
