@@ -12,7 +12,12 @@ elif [[ "$(uname)" == "Linux" ]]; then
 fi
 
 # Initialize the Starship prompt
-eval "$(starship init zsh)"
+# Check that the function `starship_zle-keymap-select()` is defined.
+# xref: https://github.com/starship/starship/issues/3418
+type starship_zle-keymap-select >/dev/null || \
+  {
+    eval "$(starship init zsh)"
+  }
 
 # Check and install zsh-autosuggestions if not already installed
 if [ ! -d "$HOME/.zsh/plugins/zsh-autosuggestions" ]; then
@@ -45,4 +50,6 @@ setopt inc_append_history
 
 # Enable Zsh completions
 autoload -Uz compinit && compinit
+
+alias zup='rm -rf ~/.zsh/plugins && source ~/.zshrc'
 
