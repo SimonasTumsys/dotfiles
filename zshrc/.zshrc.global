@@ -1,0 +1,55 @@
+
+export EDITOR="nvim"
+export SUDO_EDITOR="$EDITOR"
+
+# Set up platform-dependent paths
+if [[ "$(uname)" == "Darwin" ]]; then
+  # macOS paths (only Homebrew by default)
+  export PATH="/opt/homebrew/bin:$PATH"
+elif [[ "$(uname)" == "Linux" ]]; then
+  # Linux paths (only user-local binaries by default)
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Initialize the Starship prompt
+# Check that the function `starship_zle-keymap-select()` is defined.
+# xref: https://github.com/starship/starship/issues/3418
+type starship_zle-keymap-select >/dev/null || \
+  {
+    eval "$(starship init zsh)"
+  }
+
+# Check and install zsh-autosuggestions if not already installed
+if [ ! -d "$HOME/.zsh/plugins/zsh-autosuggestions" ]; then
+  echo "Installing zsh-autosuggestions..."
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.zsh/plugins/zsh-autosuggestions"
+fi
+
+# Check and install zsh-syntax-highlighting if not already installed
+if [ ! -d "$HOME/.zsh/plugins/zsh-syntax-highlighting" ]; then
+  echo "Installing zsh-syntax-highlighting..."
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh/plugins/zsh-syntax-highlighting"
+fi
+
+# Check and install zsh-vi-mode if not already installed
+if [ ! -d "$HOME/.zsh/plugins/zsh-vi-mode" ]; then
+  echo "Installing zsh-vi-mode..."
+  git clone https://github.com/jeffreytse/zsh-vi-mode.git "$HOME/.zsh/plugins/zsh-vi-mode"
+fi
+
+# Source the plugins if they're installed
+source "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+
+# History settings
+HISTFILE=~/.history
+HISTSIZE=10000
+SAVEHIST=50000
+setopt inc_append_history
+
+# Enable Zsh completions
+autoload -Uz compinit && compinit
+
+alias zup='rm -rf ~/.zsh/plugins && source ~/.zshrc'
+
