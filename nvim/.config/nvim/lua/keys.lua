@@ -24,7 +24,7 @@ map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
 
 -- telescope
-map('n', '<leader>f', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>f', '<cmd>Telescope find_files hidden=true<cr>')
 
 -- yank to system register
 map({ "n", "v" }, "<leader>y", '"+y')
