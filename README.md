@@ -14,16 +14,45 @@ By using Stow, symlinks are automatically created in the right places.
 
 ---
 
+### Dependencies
+#### Arch
+```bash
+pacman -S git
+pacman -S stow
+```
+
+#### MacOS
+```bash
+brew install git
+brew install stow
+```
+---
+
 ### How to use
 
-1. Install [GNU Stow](https://github.com/aspiers/stow)  
-2. Backup any existing config files you’ll be replacing  
-3. Clone this repo to your `$HOME` directory  
-4. Delete existing configs (e.g. `rm -rf ~/.config/ghostty`)  
-5. Run `cd ~/dotfiles && stow ghostty`  
+1. Clone this repo to your `$HOME` directory
+2. Backup existing configs (e.g. `mv ~/.config/ghostty ~/config-backup/ghostty`)
+> **Important:** Make sure none of the files/folders that you plan to stow exist in your $HOME or $HOME/.config directories
+3. Run `cd ~/dotfiles && stow ghostty`
    → This will create a symlink from `~/dotfiles/ghostty` to `~/.config/ghostty`
 
 ---
 
-This makes it easy to create a single configuration and keep it for a long
-time, not worrying about losing it in case of switching OS'es or distros.
+### Scripts
+
+This configuration uses some scripts. Don't forget to make them executable!
+
+```bash
+chmod +x ~/.config/backgrounds/bg_cycle.sh
+chmod +x ~/.screenlayout/monitor.sh
+chmod +x ~/.config/polybar/launch_polybar.sh
+```
+
+---
+### Credits
+
+Huge kudos to:
+- [Typecraft](https://github.com/typecraft-dev) - for inspiration and useful tutorials on this!
+- [JustAdumbPrsn](https://github.com/JustAdumbPrsn) - for lovely background images!
+- [w8ste](https://github.com/w8ste) - for the awesome TokyoNight rofi theme
+

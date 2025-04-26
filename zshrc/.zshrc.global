@@ -42,6 +42,21 @@ source "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
+# Tmux
+# Reinstall TPM
+function tpm-reinstall() {
+  echo "Reinstalling TPM..."
+  rm -rf "$HOME/.tmux/plugins/tpm"
+  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+  echo "TPM reinstalled successfully!"
+}
+
+# Update all TPM plugins
+function tpm-update() {
+  "$HOME/.tmux/plugins/tpm/bin/update_plugins" all
+  echo "TPM plugins updated!"
+}
+
 # History settings
 HISTFILE=~/.history
 HISTSIZE=10000
