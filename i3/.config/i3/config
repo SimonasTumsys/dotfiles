@@ -25,10 +25,15 @@ font pango:Commit Mono Nerd Font 10
 # set the mod key to the winkey:
 set $mod Mod4
 
+# picom
+exec --no-startup-id picom
+
 # polybar
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
-exec_always --no-startup-id ~/.config/backgrounds/bg_cycle.sh
+
+# background images
+exec --no-startup-id ~/.config/backgrounds/bg_cycle.sh &
 
 #####################
 # workspace layout: #
@@ -296,7 +301,7 @@ exec_always --no-startup-id setxkbmap -option 'grp:alt_shift_toggle'
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
-exec --no-startup-id sleep 2 && nitrogen --restore
+#exec --no-startup-id sleep 2 && nitrogen --restore
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -404,5 +409,5 @@ bindsym $mod+d exec rofi -show window
 bindsym $mod+t exec rofi -show run
 
 
-exec_always --no-startup-id nitrogen --restore
+#exec_always --no-startup-id nitrogen --restore
 
