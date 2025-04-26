@@ -38,5 +38,20 @@ brew install stow
 
 ---
 
-This makes it easy to create a single configuration and keep it for a long
-time, not worrying about losing it in case of switching OS'es or distros.
+### Scripts
+
+This configuration uses some scripts. Don't forget to make them executable!
+
+```bash
+chmod +x ~/.config/backgrounds/bg_cycle.sh
+chmod +x ~/.screenlayout/monitor.sh
+chmod +x ~/.config/polybar/launch_polybar.sh
+```
+
+---
+### Credits
+
+Huge kudos to:
+- [Typecraft](https://github.com/typecraft-dev) - for inspiration and useful tutorials on this!
+- [JustAdumbPrsn](https://github.com/JustAdumbPrsn) - for lovely background images!
+
