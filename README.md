@@ -14,13 +14,26 @@ By using Stow, symlinks are automatically created in the right places.
 
 ---
 
+### Dependencies
+#### Arch
+```bash
+pacman -S git
+pacman -S stow
+```
+
+#### MacOS
+```bash
+brew install git
+brew install stow
+```
+---
+
 ### How to use
 
-1. Install [GNU Stow](https://github.com/aspiers/stow)  
-2. Backup any existing config files you’ll be replacing  
-3. Clone this repo to your `$HOME` directory  
-4. Delete existing configs (e.g. `rm -rf ~/.config/ghostty`)  
-5. Run `cd ~/dotfiles && stow ghostty`  
+1. Clone this repo to your `$HOME` directory
+2. Backup existing configs (e.g. `mv ~/.config/ghostty ~/config-backup/ghostty`)
+> **Important:** Make sure none of the files/folders that you plan to stow exist in your $HOME or $HOME/.config directories
+3. Run `cd ~/dotfiles && stow ghostty`
    → This will create a symlink from `~/dotfiles/ghostty` to `~/.config/ghostty`
 
 ---
