@@ -54,4 +54,5 @@ chmod +x ~/.config/polybar/launch_polybar.sh
 Huge kudos to:
 - [Typecraft](https://github.com/typecraft-dev) - for inspiration and useful tutorials on this!
 - [JustAdumbPrsn](https://github.com/JustAdumbPrsn) - for lovely background images!
+- [w8ste](https://github.com/w8ste) - for the awesome TokyoNight rofi theme
 
