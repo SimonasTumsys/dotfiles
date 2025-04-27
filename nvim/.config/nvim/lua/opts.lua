@@ -35,3 +35,4 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 -- Shell flag
 vim.o.shellcmdflag = '-c'
 
+
