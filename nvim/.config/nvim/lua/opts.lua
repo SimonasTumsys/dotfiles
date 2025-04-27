@@ -35,4 +35,17 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 -- Shell flag
 vim.o.shellcmdflag = '-c'
 
+-- Auto-update lazy.nvim plugins
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = augroup("autoupdate"),
+  callback = function()
+    require("lazy").update({
+      show = false,
+    })
+  end,
+})
 
