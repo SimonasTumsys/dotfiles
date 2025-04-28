@@ -31,3 +31,8 @@ map({ "n", "v" }, "<leader>y", '"+y')
 map({ "n", "v" }, "<leader>p", '"+p')
 map({ "n", "v" }, "<leader>d", '"+d')
 
+-- vimwiki
+vim.keymap.set("n", "<leader>wn", ":VimwikiMakeDiaryNote<CR>",
+  { desc = "Open today's diary note" }
+)
+
