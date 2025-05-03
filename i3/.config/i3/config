@@ -239,6 +239,9 @@ exec --no-startup-id dex --autostart --environment i3
 # configure multiple keyboard layouts and hotkey to switch
 exec_always --no-startup-id setxkbmap -layout "us"
 exec_always --no-startup-id setxkbmap -option 'grp:alt_shift_toggle'
+exec --no-startup-id setxkbmap -layout "us"
+exec --no-startup-id setxkbmap -option 'grp:alt_shift_toggle'
+
 
 # start a script to setup displays
 exec --no-startup-id ~/.screenlayout/monitor.sh
