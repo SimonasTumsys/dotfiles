@@ -83,13 +83,13 @@ case $1 in
 
     brightness_up)
     # Increases brightness and displays the notification
-    xbacklight -A $brightness_step 
+    brightnessctl set +$brightness_step%
     show_brightness_notif
     ;;
 
     brightness_down)
     # Decreases brightness and displays the notification
-    xbacklight -U $brightness_step
+    brightnessctl set $brightness_step%-
     show_brightness_notif
     ;;
 esac
