@@ -99,7 +99,7 @@ bindsym $mod+q kill
 bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # Lock the system
-exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
+#exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -314,5 +314,7 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 
 bindsym $mod+space exec rofi -show combi
 bindsym $mod+d exec rofi -show window
-bindsym $mod+t exec rofi -show run
+#bindsym $mod+t exec rofi -show run
 
+# personal scripts
+bindsym $mod+t exec --no-startup-id bash -c 'selected=$(ls ~/.local/bin/ | rofi -dmenu -p "Run: ") && bash "$HOME/.local/bin/$selected"'
