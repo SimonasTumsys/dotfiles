@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=WifiMenu
+Exec=/home/simas/.local/bin/rofi-wifi-menu.sh
+Terminal=true
+Categories=Utility;
+
