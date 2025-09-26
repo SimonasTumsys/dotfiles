@@ -1,8 +1,8 @@
 #!/bin/bash
 
 BAT="BAT0"
-START="/sys/class/power_supply/$BAT/charge_start_threshold"
-STOP="/sys/class/power_supply/$BAT/charge_stop_threshold"
+START="/sys/class/power_supply/$BAT/charge_control_start_threshold"
+STOP="/sys/class/power_supply/$BAT/charge_control_stop_threshold"
 
 echo 95 | sudo tee "$START"
 echo 100 | sudo tee "$STOP"

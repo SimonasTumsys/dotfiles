@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=ChargeFully
-Exec=/home/simas/.local/bin/enable-full-charge-temporarily.sh
-Terminal=true
-Categories=Utility;
-

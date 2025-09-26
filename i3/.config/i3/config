@@ -96,7 +96,8 @@ bindsym $mod+Return exec --no-startup-id ghostty
 bindsym $mod+q kill
 
 # exit-menu
-bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
+bindsym $mod+p exec --no-startup-id ~/.config/i3/scripts/powermenu
+
 
 # Lock the system
 #exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
@@ -149,9 +150,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+g layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+g layout tabbed
+bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -183,7 +184,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Redirect sound to headphones
-bindsym $mod+p exec --no-startup-id /usr/local/bin/switch-audio-port
+bindsym $mod+e exec --no-startup-id /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+w exec --no-startup-id /usr/bin/firefox
@@ -250,7 +251,7 @@ exec --no-startup-id setxkbmap -option 'grp:alt_shift_toggle'
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set powersavings for display:
-exec --no-startup-id xset s 480 dpms 600 600 600
+exec --no-startup-id xset s 3600 dpms 3600 3600 3600
 
 # Desktop notifications
 exec --no-startup-id /usr/bin/dunst
@@ -320,3 +321,6 @@ bindsym $mod+d exec rofi -show window
 
 # personal scripts
 bindsym $mod+t exec --no-startup-id bash -c 'selected=$(ls ~/.local/bin/ | rofi -dmenu -p "Run: ") && bash "$HOME/.local/bin/$selected"'
+
+# bluetooth
+bindsym $mod+Shift+b exec --no-startup-id bash -c "$HOME/.local/bin/rofi-bluetooth-menu.sh"

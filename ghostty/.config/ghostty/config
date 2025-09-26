@@ -16,7 +16,7 @@ font-style = "bold"
 adjust-underline-position = 10
 
 # Theme
-theme = tokyonight_night
+theme = TokyoNight Night
 
 # Background
 background-opacity = 0.85

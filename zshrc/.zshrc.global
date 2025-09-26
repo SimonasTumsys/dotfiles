@@ -67,4 +67,5 @@ setopt inc_append_history
 autoload -Uz compinit && compinit
 
 alias zup='rm -rf ~/.zsh/plugins && source ~/.zshrc'
+alias bat='upower -i $(upower -e | grep BAT)'
 
