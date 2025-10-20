@@ -189,7 +189,8 @@ bindsym $mod+e exec --no-startup-id /usr/local/bin/switch-audio-port
 ## App shortcuts
 bindsym $mod+w exec --no-startup-id /usr/bin/firefox
 bindsym $mod+n exec --no-startup-id /usr/bin/thunar
-bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym Print exec --no-startup-id maim ~/screenshot-$(date +"%Y-%m-%d-%T").png && notify-send "Screenshot saved to ~/screenshot-$(date +"%Y-%m-%d-%T").png"
+bindsym Shift+Print exec --no-startup-id maim -so ~/screenshot-$(date +"%Y-%m-%d-%T").png && notify-send "Screenshot saved to ~/screenshot-$(date +"%Y-%m-%d-%T").png"
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
@@ -221,7 +222,7 @@ workspace $ws7 output DP-2
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=ghostty] focus
-for_window [class=(?i)zen-browser] focus
+for_window [class=(?i)firefox] focus
 for_window [class=Thunar] focus
 
 ##############
@@ -264,6 +265,7 @@ exec --no-startup-id /usr/bin/dunst
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="transmission-gtk"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -322,5 +324,5 @@ bindsym $mod+d exec rofi -show window
 # personal scripts
 bindsym $mod+t exec --no-startup-id bash -c 'selected=$(ls ~/.local/bin/ | rofi -dmenu -p "Run: ") && bash "$HOME/.local/bin/$selected"'
 
-# bluetooth
-bindsym $mod+Shift+b exec --no-startup-id bash -c "$HOME/.local/bin/rofi-bluetooth-menu.sh"
+# rofi wifi menu
+bindsym $mod+Shift+i exec --no-startup-id bash -c "$HOME/.local/bin/rofi-wifi-menu.sh"
