@@ -326,3 +326,4 @@ bindsym $mod+t exec --no-startup-id bash -c 'selected=$(ls ~/.local/bin/ | rofi 
 
 # rofi wifi menu
 bindsym $mod+Shift+i exec --no-startup-id bash -c "$HOME/.local/bin/rofi-wifi-menu.sh"
+
