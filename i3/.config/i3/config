@@ -10,10 +10,13 @@ set $mod Mod4
 
 # polybar
 exec_always --no-startup-id killall polybar
-exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
+exec_always --no-startup-id ~/.config/polybar/scripts/launch_polybar.sh
 
 # background images
-exec --no-startup-id ~/.config/backgrounds/bg_cycle.sh &
+exec --no-startup-id ~/.local/share/backgrounds/bg_cycle.sh &
+
+# blueman
+exec --no-startup-id blueman-applet
 
 #####################
 # workspace layout: #
@@ -31,7 +34,7 @@ new_window pixel 1
 
 # Set inner/outer gaps
 gaps inner 6
-gaps outer 3
+gaps outer 1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -93,7 +96,8 @@ bindsym $mod+Return exec --no-startup-id ghostty
 bindsym $mod+q kill
 
 # exit-menu
-bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
+bindsym $mod+p exec --no-startup-id ~/.config/i3/scripts/powermenu
+
 
 # Lock the system
 exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
@@ -146,9 +150,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+g layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+g layout tabbed
+bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -179,13 +183,17 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
+# external monitor control
+bindsym XF86Display exec --no-startup-id ~/.config/i3/scripts/toggle-external-display.sh
+
 # Redirect sound to headphones
-bindsym $mod+p exec --no-startup-id /usr/local/bin/switch-audio-port
+bindsym $mod+e exec --no-startup-id /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec --no-startup-id /usr/bin/zen-browser
+bindsym $mod+w exec --no-startup-id /usr/bin/firefox
 bindsym $mod+n exec --no-startup-id /usr/bin/thunar
-bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym Print exec --no-startup-id maim ~/screenshot-$(date +"%Y-%m-%d-%T").png && notify-send "Screenshot saved to ~/screenshot-$(date +"%Y-%m-%d-%T").png"
+bindsym Shift+Print exec --no-startup-id maim -so ~/screenshot-$(date +"%Y-%m-%d-%T").png && notify-send "Screenshot saved to ~/screenshot-$(date +"%Y-%m-%d-%T").png"
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
@@ -217,7 +225,7 @@ workspace $ws7 output DP-2
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=ghostty] focus
-for_window [class=(?i)zen-browser] focus
+for_window [class=(?i)firefox] focus
 for_window [class=Thunar] focus
 
 ##############
@@ -237,17 +245,13 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3
 
 # configure multiple keyboard layouts and hotkey to switch
-exec_always --no-startup-id setxkbmap -layout "us"
-exec_always --no-startup-id setxkbmap -option 'grp:alt_shift_toggle'
-exec --no-startup-id setxkbmap -layout "us"
-exec --no-startup-id setxkbmap -option 'grp:alt_shift_toggle'
-
+exec_always --no-startup-id setxkbmap -layout 'us,lt' -option 'grp:alt_shift_toggle'
 
 # start a script to setup displays
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set powersavings for display:
-exec --no-startup-id xset s 480 dpms 600 600 600
+exec --no-startup-id xset s 3600 dpms 3600 3600 3600
 
 # Desktop notifications
 exec --no-startup-id /usr/bin/dunst
@@ -260,6 +264,7 @@ exec --no-startup-id /usr/bin/dunst
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="transmission-gtk"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -272,6 +277,8 @@ for_window [window_role="About"] floating enable
 
 # set border of floating window
 for_window [class="urxvt"] border pixel 1
+
+for_window [class=".*"] border pixel 0
 
 # set size of floating window
 #for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
@@ -311,5 +318,15 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 
 bindsym $mod+space exec rofi -show combi
 bindsym $mod+d exec rofi -show window
-bindsym $mod+t exec rofi -show run
+#bindsym $mod+t exec rofi -show run
 
+# personal scripts
+bindsym $mod+t exec --no-startup-id bash -c 'selected=$(ls ~/.local/bin/scripts/ | rofi -dmenu -p "Run: ") && bash "$HOME/.local/bin/scripts/$selected"'
+
+# rofi wifi menu
+bindsym $mod+Shift+i exec --no-startup-id bash -c "$HOME/.local/bin/scripts/rofi-wifi-menu.sh"
+
+# float exceptions
+for_window [class="Wine"] floating enable
+
+exec_always --no-startup-id autorandr --change --default mobile

@@ -6,6 +6,7 @@ return {
       require("mason").setup()
     end,
   },
+  { "neovim/nvim-lspconfig" },
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
@@ -22,15 +23,9 @@ return {
           "bashls",
         },
         automatic_installation = false, -- if true, will install by file extension
+        automatic_enable = true,
     })
-      -- auto-attach lspconfig to each installed server
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          require("lspconfig")[server_name].setup({})
-        end,
-      })
     end,
   },
-  { "neovim/nvim-lspconfig" },
 }
 

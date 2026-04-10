@@ -16,7 +16,7 @@ font-style = "bold"
 adjust-underline-position = 10
 
 # Theme
-theme = tokyonight_night
+theme = TokyoNight Night
 
 # Background
 background-opacity = 0.85
@@ -25,7 +25,7 @@ background-blur = true
 # Title bar
 #macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden
-window-decoration = true
+window-decoration = false
 window-subtitle = false
 
 # Keybindings
