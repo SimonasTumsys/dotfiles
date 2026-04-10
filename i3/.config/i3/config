@@ -183,6 +183,9 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
+# external monitor control
+bindsym XF86Display exec --no-startup-id ~/.config/i3/scripts/toggle-external-display.sh
+
 # Redirect sound to headphones
 bindsym $mod+e exec --no-startup-id /usr/local/bin/switch-audio-port
 
@@ -318,8 +321,12 @@ bindsym $mod+d exec rofi -show window
 #bindsym $mod+t exec rofi -show run
 
 # personal scripts
-bindsym $mod+t exec --no-startup-id bash -c 'selected=$(ls ~/.local/bin/ | rofi -dmenu -p "Run: ") && bash "$HOME/.local/bin/$selected"'
+bindsym $mod+t exec --no-startup-id bash -c 'selected=$(ls ~/.local/bin/scripts/ | rofi -dmenu -p "Run: ") && bash "$HOME/.local/bin/scripts/$selected"'
 
 # rofi wifi menu
-bindsym $mod+Shift+i exec --no-startup-id bash -c "$HOME/.local/bin/rofi-wifi-menu.sh"
+bindsym $mod+Shift+i exec --no-startup-id bash -c "$HOME/.local/bin/scripts/rofi-wifi-menu.sh"
 
+# float exceptions
+for_window [class="Wine"] floating enable
+
+exec_always --no-startup-id autorandr --change --default mobile
