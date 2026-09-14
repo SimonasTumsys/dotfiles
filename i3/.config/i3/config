@@ -9,14 +9,14 @@ font pango:Commit Mono Nerd Font 10
 set $mod Mod4
 
 # polybar
-exec_always --no-startup-id killall polybar
-exec_always --no-startup-id ~/.config/polybar/scripts/launch_polybar.sh
+#exec_always --no-startup-id killall polybar
+exec_always --no-startup-id ~/.config/polybar/scripts/launch_polybar_xfce.sh
 
 # background images
-exec --no-startup-id ~/.local/share/backgrounds/bg_cycle.sh &
+#exec --no-startup-id ~/.local/share/backgrounds/bg_cycle.sh &
 
 # blueman
-exec --no-startup-id blueman-applet
+#exec --no-startup-id blueman-applet
 
 #####################
 # workspace layout: #
@@ -33,7 +33,7 @@ workspace_layout default
 new_window pixel 1
 
 # Set inner/outer gaps
-gaps inner 6
+gaps inner 2
 gaps outer 1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -96,8 +96,7 @@ bindsym $mod+Return exec --no-startup-id ghostty
 bindsym $mod+q kill
 
 # exit-menu
-bindsym $mod+p exec --no-startup-id ~/.config/i3/scripts/powermenu
-
+#bindsym $mod+p exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # Lock the system
 exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
@@ -113,8 +112,8 @@ bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
 
 # Backlight control
 # Backlight setting using dunst osc
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
+#bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
+#bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
 
 # change focus
 bindsym $mod+h focus left
@@ -167,36 +166,36 @@ bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/scripts/empty_workspace
 
 # volume
 # use meta keys showing osc using dunst
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_down
+#bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
+#bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_down
 
 # mute
 # use meta keys showing osc using dunst
-bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_mute
+#bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_mute
 
 # mic mute toggle
-bindsym XF86AudioMicMute exec amixer sset Capture toggle
+#bindsym XF86AudioMicMute exec amixer sset Capture toggle
 
 # audio control
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause 
+#bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause 
 # Above line will also work for pausing
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+#bindsym XF86AudioNext exec --no-startup-id playerctl next
+#bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # external monitor control
-bindsym XF86Display exec --no-startup-id ~/.config/i3/scripts/toggle-external-display.sh
+#bindsym XF86Display exec --no-startup-id ~/.config/i3/scripts/toggle-external-display.sh
 
 # Redirect sound to headphones
-bindsym $mod+e exec --no-startup-id /usr/local/bin/switch-audio-port
+#bindsym $mod+e exec --no-startup-id /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+w exec --no-startup-id /usr/bin/firefox
 bindsym $mod+n exec --no-startup-id /usr/bin/thunar
-bindsym Print exec --no-startup-id maim ~/screenshot-$(date +"%Y-%m-%d-%T").png && notify-send "Screenshot saved to ~/screenshot-$(date +"%Y-%m-%d-%T").png"
-bindsym Shift+Print exec --no-startup-id maim -so ~/screenshot-$(date +"%Y-%m-%d-%T").png && notify-send "Screenshot saved to ~/screenshot-$(date +"%Y-%m-%d-%T").png"
+#bindsym Print exec --no-startup-id maim ~/screenshot-$(date +"%Y-%m-%d-%T").png && notify-send "Screenshot saved to ~/screenshot-$(date +"%Y-%m-%d-%T").png"
+#bindsym Shift+Print exec --no-startup-id maim -so ~/screenshot-$(date +"%Y-%m-%d-%T").png && notify-send "Screenshot saved to ~/screenshot-$(date +"%Y-%m-%d-%T").png"
 
 # Power Profiles menu switcher (rofi)
-bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
+#bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 
 ##########################################
 # configuration for workspace behaviour: #
@@ -248,13 +247,13 @@ exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id setxkbmap -layout 'us,lt' -option 'grp:alt_shift_toggle'
 
 # start a script to setup displays
-exec --no-startup-id ~/.screenlayout/monitor.sh
+#exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set powersavings for display:
-exec --no-startup-id xset s 3600 dpms 3600 3600 3600
+#exec --no-startup-id xset s 3600 dpms 3600 3600 3600
 
 # Desktop notifications
-exec --no-startup-id /usr/bin/dunst
+#exec --no-startup-id /usr/bin/dunst
 
 ##################
 # floating rules #
@@ -321,12 +320,12 @@ bindsym $mod+d exec rofi -show window
 #bindsym $mod+t exec rofi -show run
 
 # personal scripts
-bindsym $mod+t exec --no-startup-id bash -c 'selected=$(ls ~/.local/bin/scripts/ | rofi -dmenu -p "Run: ") && bash "$HOME/.local/bin/scripts/$selected"'
+#bindsym $mod+t exec --no-startup-id bash -c 'selected=$(ls ~/.local/bin/scripts/ | rofi -dmenu -p "Run: ") && bash "$HOME/.local/bin/scripts/$selected"'
 
 # rofi wifi menu
-bindsym $mod+Shift+i exec --no-startup-id bash -c "$HOME/.local/bin/scripts/rofi-wifi-menu.sh"
+#bindsym $mod+Shift+i exec --no-startup-id bash -c "$HOME/.local/bin/scripts/rofi-wifi-menu.sh"
 
 # float exceptions
 for_window [class="Wine"] floating enable
 
-exec_always --no-startup-id autorandr --change --default mobile
+#exec_always --no-startup-id autorandr --change --default mobile
