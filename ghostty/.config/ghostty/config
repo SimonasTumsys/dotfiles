@@ -6,17 +6,14 @@
 # Additionally, each config option is also explained in detail
 # on Ghostty's website, at https://ghostty.org/docs/config.
 
-# # The config file consists of simple key-value pairs,
-# # separated by equals signs.
-
 # Font
 font-family = "CommitMono Nerd Font"
-font-size = 16 
+font-size = 14 
 font-style = "bold"
 adjust-underline-position = 10
 
 # Theme
-theme = TokyoNight Night
+theme = GitHub Dark
 
 # Background
 background-opacity = 0.85

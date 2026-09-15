@@ -6,3 +6,5 @@ require("opts")
 require("config.lazy")
 require("config.diagnostics")
 
+vim.cmd 'colorscheme evergarden'
+

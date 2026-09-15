@@ -147,21 +147,22 @@ bindsym $mod+s layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 mode "resize" {
-    bindsym h resize shrink width  10 px or 10 ppt
-    bindsym j resize grow   height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow   width  10 px or 10 ppt
-
-    bindsym Left  resize shrink width  10 px or 10 ppt
-    bindsym Down  resize grow   height 10 px or 10 ppt
-    bindsym Up    resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow   width  10 px or 10 ppt
+    bindsym h resize shrink width  5 px or 5 ppt
+    bindsym j resize grow   height 5 px or 5 ppt
+    bindsym k resize shrink height 5 px or 5 ppt
+    bindsym l resize grow   width  5 px or 5 ppt
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
+
+# resize without resize mode
+bindsym $mod+Ctrl+h resize shrink width  5 px or 5 ppt
+bindsym $mod+Ctrl+j resize grow   height 5 px or 5 ppt
+bindsym $mod+Ctrl+k resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+l resize grow   width  5 px or 5 ppt
 
 
 #################
@@ -175,6 +176,8 @@ bindsym $mod+n      exec --no-startup-id /usr/bin/thunar
 bindsym $mod+d     exec rofi -show window
 bindsym $mod+space exec --no-startup-id xfce4-popup-whiskermenu
 
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus       scratchpad show
 
 ###############
 # wm control  #
